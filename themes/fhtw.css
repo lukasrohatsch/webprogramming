@@ -1,0 +1,52 @@
+/*!
+@theme fhtw
+@version 0.1.0
+*/
+
+/* fhtw.css */
+@import 'gaia'; /* Import default Marp styles to build upon */
+
+section {
+    background-image: none;
+    background-color: white;
+    font-size: 25px; 
+    color:black;
+    padding: 1rem;
+}
+
+section[data-class="lead"] {
+    background-image: 
+      url('../themes/img/fhtw_logo.svg'),       /* Logo on top layer */
+      linear-gradient(rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.70)),
+      url('../themes/img/title_bg.jpg'); /* Background image on bottom layer */
+    
+    /* Position and size of each layer */
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: bottom left, center, top; /* Position logo in bottom-right */
+    background-size: 400px, cover, cover;             /* Logo size and background cover */
+  
+    /*font-family: Lato, 'Avenir Next', Avenir, 'Trebuchet MS', 'Segoe UI', sans-serif; /*default*/
+}
+
+section.lead h1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+section.lead p {
+    font-size: 0.9em;
+    text-align: center;
+}
+
+footer {
+    /*font-family: Lato, 'Avenir Next', Avenir, 'Trebuchet MS', 'Segoe UI', sans-serif; /*default*/
+    font-size: 60%;
+    color: #6a7a7d;
+    text-align: end;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
