@@ -25,10 +25,27 @@
 	padding: 10px;
 	margin: 10px;
 	margin-top: -30px;
+	position: relative;
   }
   
   #imageContainer img{
 	width: 350px;
+  }
+  
+  #imageContainer span{
+	position: absolute;
+	top: 28px;
+	  left: 90px;
+	  background-color: white;
+	  font-size: 13px;
+	  width: 70px;
+	  text-align: center;
+	  padding: 8px;		
+	  border-radius: 50px;
+	  font-style: italic;
+	  font-weight: bold;
+	  background-color: #fcfef0;
+	  border: 2px #2a2c36 solid;
   }
 
   #chatContainer {
@@ -113,7 +130,7 @@
 		
 		<div id="imageContainer">
 			<img src="Speaker.jpg">
-		  
+			<span>You speak JS?</span>
 		</div>	
 	</div>
 <script>
@@ -124,7 +141,7 @@
 
   // Funktion, um das JSON-File zu laden
   function loadTranscript() {
-    fetch('output.json')
+    fetch('transcript01.json')
       .then(response => response.json())
       .then(data => {
         transcriptData = data.segments.map(segment => ({
