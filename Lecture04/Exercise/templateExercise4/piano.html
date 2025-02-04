@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Piano</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container text-center my-5">
+        <h1>Virtual Piano</h1>
+        <p>Press the following keys to play the notes:</p>
+        <ul class="list-inline">
+            <li class="list-inline-item key-spacing">
+                <i class="bi bi-keyboard"></i> <strong>A</strong> - C
+            </li>
+            <li class="list-inline-item key-spacing">
+                <i class="bi bi-keyboard"></i> <strong>S</strong> - D
+            </li>
+            <li class="list-inline-item key-spacing">
+                <i class="bi bi-keyboard"></i> <strong>D</strong> - E
+            </li>
+            <li class="list-inline-item key-spacing">
+                <i class="bi bi-keyboard"></i> <strong>F</strong> - F
+            </li>
+            <li class="list-inline-item key-spacing">
+                <i class="bi bi-keyboard"></i> <strong>G</strong> - G
+            </li>
+            <li class="list-inline-item key-spacing">
+                <i class="bi bi-keyboard"></i> <strong>H</strong> - A
+            </li>
+            <li class="list-inline-item key-spacing">
+                <i class="bi bi-keyboard"></i> <strong>J</strong> - B
+            </li>
+        </ul>
+        <div id="piano" class="d-flex justify-content-center">
+            <!-- Piano keys with IDs for JavaScript interaction -->
+        </div>
+        <div id="note-line" class="mt-4">
+            <!-- Place Note Line here -->
+        </div>
+        <!-- Place Buttons here -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
