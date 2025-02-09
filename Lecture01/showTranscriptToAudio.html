@@ -14,7 +14,7 @@
     margin: 0;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
   }
@@ -22,27 +22,43 @@
   /* Podcast Container */
   #podcastContainer {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     background: rgba(255, 255, 255, 0.15);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    width: 90%;
+    max-width: 90%;
+    width: 400px;
   }
 
-  /* Left Side - Audio & Transcript */
-  #chatContainer {
-    flex: 1;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
+  /* Speaker Image */
+  #imageContainer {
+    position: relative;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
-  /* Audio Player */
-  audio {
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 10px;
+  #imageContainer img {
+    width: 180px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Keep "You speak JS?" Positioned on the Image */
+  #imageContainer span {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fcfef0;
+    font-size: 13px;
+    font-weight: bold;
+    width: 70px;
+    text-align: center;
+    padding: 8px;
+    border-radius: 50px;
+    border: 2px solid #2a2c36;
   }
 
   /* Transcript Box */
@@ -56,6 +72,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 100%;
   }
 
   /* Chat Bubbles */
@@ -83,34 +100,24 @@
     border-bottom-left-radius: 0;
   }
 
-  /* Right Side - Speaker Image */
-  #imageContainer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  #imageContainer img {
-    width: 180px;
-    border-radius: 50%;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  }
-
-  #imageContainer span {
+  /* Audio Player */
+  audio {
+    width: 100%;
+    border-radius: 10px;
     margin-top: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 8px 15px;
-    border-radius: 15px;
-    font-size: 0.85em;
-    font-weight: bold;
   }
+
 </style>
 </head>
 
 <body>
   <div id="podcastContainer">
+
+    <!-- Speaker Image -->
+    <div id="imageContainer">
+      <img src="Speaker.jpg" alt="Podcast Speaker">
+      <span>You speak JS?</span>
+    </div>
 
     <!-- Chat Container -->
     <div id="chatContainer">
@@ -119,12 +126,6 @@
         <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture01/JavaScript,%20Developer%20Tools,%20and%20the%20Memory%20Game.mp3" type="audio/mp3">
         Your browser does not support the audio element.
       </audio>
-    </div>
-
-    <!-- Speaker Image -->
-    <div id="imageContainer">
-      <img src="Speaker.jpg" alt="Podcast Speaker">
-      <span>You speak JS?</span>
     </div>
 
   </div>
