@@ -116,7 +116,7 @@
     <div id="chatContainer">
       <div id="transcript"></div>
       <audio id="audioPlayer" controls>
-        <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture01/JavaScript,%20Developer%20Tools,%20and%20the%20Memory%20Game.mp3" type="audio/mp3">
+        <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture02/Audio/JavaScript%20Functions,%20Events,%20and%20the%20Virtual%20Piano.mp3" type="audio/mp3">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -137,7 +137,7 @@
 
   // Load Transcript JSON
   function loadTranscript() {
-    fetch('transcript01.json')
+    fetch('transcript02.json')
       .then(response => response.json())
       .then(data => {
         transcriptData = data.segments.map(segment => ({
