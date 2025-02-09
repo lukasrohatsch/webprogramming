@@ -3,143 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <title>Podcast Player</title>
-<style>
-  body {
-    font-family: 'Tahoma', 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 10px;
-	display: flex;
-    height: 100vh;
-  }
-  
-  audio{
-	margin-top: -10px;
-  }
-  
-  #imageContainer {
-    flex: 1;
-    /*background: url('Speaker.jpg') no-repeat center center;
-    background-size: cover;*/
-	width:350px;
-	padding: 10px;
-	margin: 10px;
-	margin-top: -30px;
-	position: relative;
-  }
-  
-  #imageContainer img{
-	width: 350px;
-  }
-  
-  #imageContainer span{
-	position: absolute;
-	top: 28px;
-	  left: 90px;
-	  background-color: white;
-	  font-size: 13px;
-	  width: 70px;
-	  text-align: center;
-	  padding: 8px;		
-	  border-radius: 50px;
-	  font-style: italic;
-	  font-weight: bold;
-	  background-color: #fcfef0;
-	  border: 2px #2a2c36 solid;
-  }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  #chatContainer {
-    flex: 1;
-    overflow-y: auto;
+<style>
+  /* General Page Styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    margin: 0;
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    /*border-left: 2px solid #ccc;*/
-	width:350px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
 
+  /* Podcast Container */
+  #podcastContainer {
+    display: flex;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 90%;
+  }
+
+  /* Left Side - Audio & Transcript */
+  #chatContainer {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Audio Player */
+  audio {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  /* Transcript Box */
   #transcript {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    height: 300px;
+    margin-top: 10px;
+    padding: 15px;
+    height: 250px;
     overflow-y: auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-	background-image: url("i-message-texting.gif");
-	background-repeat: no-repeat;
-	background-position:bottom;
   }
 
+  /* Chat Bubbles */
   .message {
-    padding: 10px 20px;
-    border-radius: 20px;
-    color: white;
+    padding: 10px 15px;
+    border-radius: 15px;
     max-width: 70%;
+    font-size: 0.9em;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
     word-wrap: break-word;
-	font-size: 0.8em;
-	box-shadow: 3px 3px 5px #b8b8b8;
-	
   }
 
   .speaker0 {
-	background: linear-gradient(0deg, rgb(182, 182, 182) 0%, rgb(237, 237, 237) 74%);
-    align-self: flex-end; /* Nachrichten von speaker0 rechts ausrichten */
+    background: linear-gradient(0deg, rgb(182, 182, 182) 0%, rgb(237, 237, 237) 74%);
+    align-self: flex-end;
     margin-left: auto;
-	border-bottom-right-radius: 0;
-	color:#111;
+    border-bottom-right-radius: 0;
+    color: #111;
   }
 
   .speaker1 {
-	background: linear-gradient(0deg, rgb(31, 31, 31) 0%, rgb(139, 139, 139) 74%);
-    align-self: flex-start; /* Nachrichten von speaker1 links ausrichten */
+    background: linear-gradient(0deg, rgb(31, 31, 31) 0%, rgb(139, 139, 139) 74%);
+    align-self: flex-start;
     margin-right: auto;
-	border-bottom-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
-  
-  #podcastStage{
-	display:flex;
-	
+
+  /* Right Side - Speaker Image */
+  #imageContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  
-  #speakerImage{
-	flex: 1;
-	background-image: url("Speaker.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: bottom;
-	padding-bottom:100%;
-	width:50%;
+
+  #imageContainer img {
+    width: 180px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   }
-  
+
+  #imageContainer span {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: bold;
+  }
 </style>
 </head>
-<body>
-	<div id="podcastContainer">
-		<div id="chatContainer">
 
-		  <div id="transcript"></div>
-			<audio id="audioPlayer" controls>
-			<source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture01/JavaScript,%20Developer%20Tools,%20and%20the%20Memory%20Game.mp3" type="audio/mp3">
-			Ihr Browser unterstützt das Audio-Element nicht.
-		  </audio>
-		</div>
-		
-		<div id="imageContainer">
-			<img src="Speaker.jpg">
-			<span>You speak JS?</span>
-		</div>	
-	</div>
+<body>
+  <div id="podcastContainer">
+
+    <!-- Chat Container -->
+    <div id="chatContainer">
+      <div id="transcript"></div>
+      <audio id="audioPlayer" controls>
+        <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture01/JavaScript,%20Developer%20Tools,%20and%20the%20Memory%20Game.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Speaker Image -->
+    <div id="imageContainer">
+      <img src="Speaker.jpg" alt="Podcast Speaker">
+      <span>You speak JS?</span>
+    </div>
+
+  </div>
+
 <script>
   const transcriptBox = document.getElementById('transcript');
   const audioPlayer = document.getElementById('audioPlayer');
   let lastText = "";
   let transcriptData = [];
 
-  // Funktion, um das JSON-File zu laden
+  // Load Transcript JSON
   function loadTranscript() {
     fetch('transcript01.json')
       .then(response => response.json())
@@ -154,26 +150,26 @@
       .catch(error => console.error('Error loading the transcript:', error));
   }
 
-  // Event-Listener für die Synchronisation des Transkripts mit dem Audio
+  // Sync Transcript with Audio
   audioPlayer.addEventListener('timeupdate', () => {
     const currentTime = audioPlayer.currentTime;
     transcriptData.forEach(segment => {
       if (currentTime >= segment.start && currentTime <= segment.end) {
-        if (segment.text != lastText) {
+        if (segment.text !== lastText) {
           const messageElement = document.createElement('div');
           messageElement.className = `message speaker${segment.speaker.slice(-1)}`;
           messageElement.textContent = segment.text;
           transcriptBox.appendChild(messageElement);
-		  transcriptBox.style.backgroundImage = "none";
-          transcriptBox.scrollTop = transcriptBox.scrollHeight; // Auto-scroll to the latest message
+          transcriptBox.scrollTop = transcriptBox.scrollHeight; // Auto-scroll
           lastText = segment.text;
         }
       }
     });
   });
 
-  // Laden des Transkripts beim Start
+  // Load Transcript on Page Load
   window.addEventListener('load', loadTranscript);
 </script>
+
 </body>
 </html>
