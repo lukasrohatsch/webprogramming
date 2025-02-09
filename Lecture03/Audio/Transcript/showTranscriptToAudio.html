@@ -216,6 +216,7 @@
           messageElement.className = `message speaker${segment.speaker.slice(-1)}`;
           messageElement.textContent = segment.text;
           transcriptBox.appendChild(messageElement);
+          transcriptBox.style.backgroundImage = "none";
           transcriptBox.scrollTop = transcriptBox.scrollHeight;
           lastText = segment.text;
         }
