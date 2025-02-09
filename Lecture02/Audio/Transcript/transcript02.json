@@ -409,7 +409,7 @@
                      },
                      {
                          "id":  8,
-                         "text":  "H-GML, CSS, PHP.",
+                         "text":  "HTML, CSS, PHP.",
                          "start":  22.88,
                          "end":  24.82,
                          "avg_logprob":  -0.234619140625,
@@ -417,7 +417,7 @@
                          "speaker":  "SPEAKER_00",
                          "words":  [
                                        {
-                                           "word":  "H-GML,",
+                                           "word":  "HTML,",
                                            "start":  22.880000000000003,
                                            "end":  23.560000000000002,
                                            "score":  0.36,
