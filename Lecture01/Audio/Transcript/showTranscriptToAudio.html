@@ -56,6 +56,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+	background-image: url("i-message-texting.gif");
+	  background-repeat: no-repeat;
+	  background-position:bottom;
   }
 
   /* Chat Bubbles */
@@ -90,12 +93,14 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+	position: relative;
   }
 
   #imageContainer img {
     width: 250px;
     border-radius: 5%;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+	margin-top: 20px;
   }
 
   #imageContainer span {
@@ -106,6 +111,43 @@
     font-size: 0.85em;
     font-weight: bold;
   }
+
+  /* Sound Wave Animation */
+  #soundWave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 40px;
+  }
+
+  .bar {
+    width: 6px;
+    height: 20px;
+    margin: 0 3px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+    animation: soundWaveAnimation 1s infinite alternate ease-in-out;
+  }
+
+  /* Bar Animations */
+  .bar:nth-child(1) { animation-duration: 0.6s; }
+  .bar:nth-child(2) { animation-duration: 0.8s; }
+  .bar:nth-child(3) { animation-duration: 1s; }
+  .bar:nth-child(4) { animation-duration: 1.2s; }
+  .bar:nth-child(5) { animation-duration: 1s; }
+  .bar:nth-child(6) { animation-duration: 0.8s; }
+  .bar:nth-child(7) { animation-duration: 0.6s; }
+
+  @keyframes soundWaveAnimation {
+    from { height: 10px; }
+    to { height: 30px; }
+  }
+
 </style>
 </head>
 
@@ -117,14 +159,26 @@
       <div id="transcript"></div>
       <audio id="audioPlayer" controls>
         <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture01/Audio/PodcastWeek01.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
+         Your browser does not support the audio element.
       </audio>
     </div>
 
-    <!-- Speaker Image -->
+    <!-- Speaker Image & Sound Wave -->
     <div id="imageContainer">
       <img src="Speaker.jpg" alt="Podcast Speaker">
       <span>You speak JS?</span>
+      
+      <!-- Sound Wave Animation -->
+      <div id="soundWave">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      
     </div>
 
   </div>
@@ -132,6 +186,7 @@
 <script>
   const transcriptBox = document.getElementById('transcript');
   const audioPlayer = document.getElementById('audioPlayer');
+  const bars = document.querySelectorAll(".bar");
   let lastText = "";
   let transcriptData = [];
 
@@ -160,11 +215,21 @@
           messageElement.className = `message speaker${segment.speaker.slice(-1)}`;
           messageElement.textContent = segment.text;
           transcriptBox.appendChild(messageElement);
-          transcriptBox.scrollTop = transcriptBox.scrollHeight; // Auto-scroll
+          transcriptBox.style.backgroundImage = "none";
+          transcriptBox.scrollTop = transcriptBox.scrollHeight;
           lastText = segment.text;
         }
       }
     });
+  });
+
+  // Animate Sound Wave with Audio
+  audioPlayer.addEventListener("play", () => {
+    bars.forEach(bar => bar.style.animationPlayState = "running");
+  });
+
+  audioPlayer.addEventListener("pause", () => {
+    bars.forEach(bar => bar.style.animationPlayState = "paused");
   });
 
   // Load Transcript on Page Load
