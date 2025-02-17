@@ -158,7 +158,7 @@
     <div id="chatContainer">
       <div id="transcript"><img src=""></div>
       <audio id="audioPlayer" controls>
-        <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture03/Audio/PodcastWeek03.mp3" type="audio/mp3">
+        <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture03/Audio/PodcastWeek04.mp3" type="audio/mp3">
          Your browser does not support the audio element.
       </audio>
     </div>
@@ -192,7 +192,7 @@
 
   // Load Transcript JSON
   function loadTranscript() {
-    fetch('transcript03.json')
+    fetch('transcript04.json')
       .then(response => response.json())
       .then(data => {
         transcriptData = data.segments.map(segment => ({

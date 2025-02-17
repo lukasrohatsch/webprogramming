@@ -100,6 +100,7 @@
     width: 250px;
     border-radius: 5%;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+	margin-top: 20px;
   }
 
   #imageContainer span {
@@ -117,7 +118,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: -40px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     width: 200px;
@@ -157,7 +158,7 @@
     <div id="chatContainer">
       <div id="transcript"><img src=""></div>
       <audio id="audioPlayer" controls>
-        <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture02/Audio/JavaScript%20Functions,%20Events,%20and%20the%20Virtual%20Piano.mp3" type="audio/mp3">
+        <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture02/Audio/PodcastWeek02.mp3" type="audio/mp3">
          Your browser does not support the audio element.
       </audio>
     </div>
@@ -214,6 +215,7 @@
           messageElement.className = `message speaker${segment.speaker.slice(-1)}`;
           messageElement.textContent = segment.text;
           transcriptBox.appendChild(messageElement);
+          transcriptBox.style.backgroundImage = "none";
           transcriptBox.scrollTop = transcriptBox.scrollHeight;
           lastText = segment.text;
         }
