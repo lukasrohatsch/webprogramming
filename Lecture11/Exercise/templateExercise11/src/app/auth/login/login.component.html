@@ -1,0 +1,35 @@
+<div class="container-fluid mb-5 p-0">
+    <h2>Login</h2>
+    <div *ngIf="!loginStatus().loggedIn">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              [(ngModel)]="username" 
+              type="text"
+              id="username"
+              class="form-control"
+              name="username"
+            />
+          </div>
+        
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              [(ngModel)]="password"  
+              type="password"
+              id="password"
+              class="form-control"
+              name="password"
+            />
+          </div>
+        
+          <button class="btn btn-primary w-100" [disabled]="!username || !password" (click)="login()">Login</button>
+    </div>
+    <div *ngIf="loginStatus().loginError" class="alert alert-warning" role="alert">
+      Login failed!
+    </div>
+    <div *ngIf="loginStatus().loggedIn">
+        You're logged in as {{ this.username }}.
+        <button class="btn btn-primary" (click)="logout()">Logout</button>
+    </div>
+</div>

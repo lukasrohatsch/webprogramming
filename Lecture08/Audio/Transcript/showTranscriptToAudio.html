@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Podcast Player</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+  /* General Page Styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  /* Podcast Container */
+  #podcastContainer {
+    display: flex;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 90%;
+  }
+
+  /* Left Side - Audio & Transcript */
+  #chatContainer {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Audio Player */
+  audio {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  /* Transcript Box */
+  #transcript {
+    margin-top: 10px;
+    padding: 15px;
+    height: 250px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-image: url("i-message-texting.gif");
+	  background-repeat: no-repeat;
+	  background-position:bottom;
+  }
+
+  /* Chat Bubbles */
+  .message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 70%;
+    font-size: 0.9em;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    word-wrap: break-word;
+  }
+
+  .speaker0 {
+    background: linear-gradient(0deg, rgb(182, 182, 182) 0%, rgb(237, 237, 237) 74%);
+    align-self: flex-end;
+    margin-left: auto;
+    border-bottom-right-radius: 0;
+    color: #111;
+  }
+
+  .speaker1 {
+    background: linear-gradient(0deg, rgb(31, 31, 31) 0%, rgb(139, 139, 139) 74%);
+    align-self: flex-start;
+    margin-right: auto;
+    border-bottom-left-radius: 0;
+  }
+
+  /* Right Side - Speaker Image */
+  #imageContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  #imageContainer img {
+    width: 250px;
+    border-radius: 5%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+  }
+
+  #imageContainer span {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: bold;
+  }
+
+  /* Sound Wave Animation */
+  #soundWave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 40px;
+  }
+
+  .bar {
+    width: 6px;
+    height: 20px;
+    margin: 0 3px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+    animation: soundWaveAnimation 1s infinite alternate ease-in-out;
+  }
+
+  /* Bar Animations */
+  .bar:nth-child(1) { animation-duration: 0.6s; }
+  .bar:nth-child(2) { animation-duration: 0.8s; }
+  .bar:nth-child(3) { animation-duration: 1s; }
+  .bar:nth-child(4) { animation-duration: 1.2s; }
+  .bar:nth-child(5) { animation-duration: 1s; }
+  .bar:nth-child(6) { animation-duration: 0.8s; }
+  .bar:nth-child(7) { animation-duration: 0.6s; }
+
+  @keyframes soundWaveAnimation {
+    from { height: 10px; }
+    to { height: 30px; }
+  }
+
+</style>
+</head>
+
+<body>
+  <div id="podcastContainer">
+
+    <!-- Chat Container -->
+    <div id="chatContainer">
+      <div id="transcript"><img src=""></div>
+      <audio id="audioPlayer" controls>
+        <source src="https://github.com/lukasrohatsch/webprogramming/raw/refs/heads/main/Lecture08/Audio/PodcastWeek08.mp3" type="audio/mp3">
+         Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Speaker Image & Sound Wave -->
+    <div id="imageContainer">
+      <img src="Speaker.jpg" alt="Podcast Speaker">
+      <span>You speak JS?</span>
+      
+      <!-- Sound Wave Animation -->
+      <div id="soundWave">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      
+    </div>
+
+  </div>
+
+<script>
+  const transcriptBox = document.getElementById('transcript');
+  const audioPlayer = document.getElementById('audioPlayer');
+  const bars = document.querySelectorAll(".bar");
+  let lastText = "";
+  let transcriptData = [];
+
+  // Load Transcript JSON
+  function loadTranscript() {
+    fetch('transcript08.json')
+      .then(response => response.json())
+      .then(data => {
+        transcriptData = data.segments.map(segment => ({
+          start: segment.start,
+          end: segment.end,
+          text: segment.text,
+          speaker: segment.speaker
+        }));
+      })
+      .catch(error => console.error('Error loading the transcript:', error));
+  }
+
+  // Sync Transcript with Audio
+  audioPlayer.addEventListener('timeupdate', () => {
+    const currentTime = audioPlayer.currentTime;
+    transcriptData.forEach(segment => {
+      if (currentTime >= segment.start && currentTime <= segment.end) {
+        if (segment.text !== lastText) {
+          const messageElement = document.createElement('div');
+          messageElement.className = `message speaker${segment.speaker.slice(-1)}`;
+          messageElement.textContent = segment.text;
+          transcriptBox.appendChild(messageElement);
+          transcriptBox.style.backgroundImage = "none";
+          transcriptBox.scrollTop = transcriptBox.scrollHeight;
+          lastText = segment.text;
+        }
+      }
+    });
+  });
+
+  // Animate Sound Wave with Audio
+  audioPlayer.addEventListener("play", () => {
+    bars.forEach(bar => bar.style.animationPlayState = "running");
+  });
+
+  audioPlayer.addEventListener("pause", () => {
+    bars.forEach(bar => bar.style.animationPlayState = "paused");
+  });
+
+  // Load Transcript on Page Load
+  window.addEventListener('load', loadTranscript);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+[
+  {
+    "category": "Math",
+    "question": "What is 2 + 2?",
+    "options": [2, 3, 4, 5],
+    "answer": 4,
+    "difficulty": "easy"
+  }
+]

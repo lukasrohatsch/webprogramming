@@ -1,0 +1,21 @@
+<div class="container-fluid mb-5 p-0">
+    <h2>Contacts</h2>
+    @if (users.length === 0) {
+    <span>You have no contacts.</span>
+    } @else {
+        @if(knownUsers().length) {
+        <h3 *ngIf="knownUsers().length">Recent users</h3>
+        <ul id="knownUsers">
+            @for (user of knownUsers(); track $index) {
+            <li><a href="javascript:;" (click)="selectUser(user.id)">{{ user.name }} ({{ user.id }})</a></li>
+            }
+        </ul>
+        <h3>Other users</h3>
+        }
+        <ul id="otherUsers">
+            @for (user of otherUsers(); track $index) {
+            <li><a href="javascript:;" (click)="selectUser(user.id)">{{ user.name }} ({{ user.id }})</a></li>
+            }
+        </ul>
+    }
+</div>

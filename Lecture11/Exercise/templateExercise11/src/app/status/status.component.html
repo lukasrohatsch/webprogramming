@@ -1,0 +1,7 @@
+<div class="mb-3">
+    @if (loginStatus().loggedIn) {
+        <span>{{ loginStatus().username }} ({{ loginStatus().id }})</span>
+    } @else {
+        <span>Not logged in.</span>
+    }
+</div>

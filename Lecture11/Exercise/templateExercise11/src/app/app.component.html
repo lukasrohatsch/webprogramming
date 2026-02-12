@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>My Messenger</h1>
+  <app-status></app-status>
+  <nav class="mb-5">
+    @for (route of appRoutes; track $index) {
+      <a class="me-4" [routerLink]="route.path">{{ route.title }}</a>
+    }
+  </nav>
+  <router-outlet></router-outlet>
+</div>
