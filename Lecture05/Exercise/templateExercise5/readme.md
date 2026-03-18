@@ -27,7 +27,11 @@ Successfully completing this exercise will earn **5 points**.
 ---
 
 ## **Submission Requirements**
-- Submit the TypeScript project as a **ZIP file via Moodle** or provide a GitHub repository link.
+- Submit the TypeScript project as a **`.zip` file via Moodle**
+- your submission **must include a built version of the app**:
+   - your app **must run without installing or running TypeScript / tsc**
+   - build your `.ts` source files using the `tsc` command and include the built `.js` files to the submission
+   - serving the files via a webserver (e.g. VSCode webserver plugin) must be sufficient to run your app
 - The submission must include:
   1. **Project Setup**: Properly configured TypeScript environment.
   2. **Typed Variables**: Type annotations applied where necessary.

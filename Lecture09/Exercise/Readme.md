@@ -186,6 +186,10 @@ export interface User {
 
 ## 📢 Submission & Testing Notes
 
+- your submission **must include a built version of the app**:
+   - your app **must run without installing or running TypeScript / tsc**
+   - build your `.ts` source files using the `tsc` command and include the built `.js` files to the submission
+   - serving the files via a webserver (e.g. VSCode webserver plugin) must be sufficient to run your app
 - Test with multiple accounts: register 2–3 test users  
 - Send messages back and forth to see how conversations work  
 - If a message doesn’t appear, check browser console or inspect the JSON payload  
