@@ -100,6 +100,11 @@ Add a component `notification-bubble`, which informs the user about **new incomi
 * the bubble shows **name** and **message content** of the new message
 * a **click on the bubble opens the conversation** with this person and closes the bubble
 
+## General requirements
+   * your submission **must include a built version of the app**, which means your app **must run without installing or running Angular**
+   * run `ng build --base-href .` to build your app, afterwards you can use your app via any webserver (e.g. VSCode internal webserver) by navigating to the path containing the built version: `messenger-frontend/dist/messenger-frontend/browser/`
+   * put your whole project folder (including the built version) into a `.zip` archive, but **don't include the `node_modules` folder**!
+
 ## Hints
 Some hints for implementing the tasks:
 * **Services**: create new services `WebSocketService` and `LocalStorageService` for encapsulating the logic interacting with LocalStorage and the WebSocket.

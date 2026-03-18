@@ -33,6 +33,12 @@ Once each module is completed, the team will work together to **integrate** thei
 
 ---
 
+## Submission requirements
+- your submission **must include a built version of the app**:
+   - your app **must run without installing or running TypeScript / tsc**
+   - build your `.ts` source files using the `tsc` command and include the built `.js` files to the submission
+   - serving the files via a webserver (e.g. VSCode webserver plugin) must be sufficient to run your app
+
 ## **Evaluation Criteria**
 - **Module Completion:** Each task is fullfiled correctly? (8 points)
 - **Final Integration:** Is the application fully functional and well-integrated? (2 points)

@@ -112,6 +112,12 @@ Example:
 
 ## **Submission Requirements**
 
+**General requirements**:
+   * your submission **must include a built version of the app**, which means your app **must run without installing or running Angular**
+   * run `ng build --base-href .` to build your app, afterwards you can use your app via any webserver (e.g. VSCode internal webserver) by navigating to the path containing the built version: `messenger-frontend/dist/messenger-frontend/browser/`
+   * put your whole project folder (including the built version) into a `.zip` archive, but **don't include the `node_modules` folder**!
+
+**Implementation requirements**: 
 1. A working Angular project named `messenger-frontend`.
 2. Feature modules `auth` and `message` correctly implemented.
 3. Routing between Intro, Login, and Message List pages functional.

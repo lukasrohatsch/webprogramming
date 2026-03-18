@@ -49,16 +49,16 @@ Total: **7 Points**
   </div>
   ```
 
-### **2. User Login Using Mock AuthService**
+### **2. User Login Using Mock ApiService**
 
-* Use provided `AuthService` mock to perform login:
+* Use provided `ApiService` mock (see `src/app/api.service.ts`) to perform login:
 
 #### Implementation:
 
-* Inject `AuthService` and call:
+* Inject `ApiService` and call:
 
   ```ts
-  auth.login(username, password);
+  api.login(username, password);
   ```
 * Store login state via a signal or localStorage.
 * Implement a **route guard** to redirect to login if not authenticated.
@@ -148,7 +148,7 @@ sendMessage(): void {
 
 | Task                                                   | Max Points |
 | ------------------------------------------------------ | ---------- |
-| Login with Mock AuthService                            | 1          |
+| Login with Mock ApiService                            | 1          |
 | Contact List & Conversations  + Send Message via API   | 4          |
 | Refresh + Auto Scroll + Routing Guard for Auth         | 2          |
 | Fetch & Signals for Loading Messages                   | 3          |
@@ -158,10 +158,17 @@ sendMessage(): void {
 
 ## **Submission Requirements**
 
+**General requirements**:
+   * your submission **must include a built version of the app**, which means your app **must run without installing or running Angular**
+   * run `ng build --base-href .` to build your app, afterwards you can use your app via any webserver (e.g. VSCode internal webserver) by navigating to the path containing the built version: `messenger-frontend/dist/messenger-frontend/browser/`
+   * put your whole project folder (including the built version) into a `.zip` archive, but **don't include the `node_modules` folder**!
+
+**Implementation requirements**: 
+
 * Continue in your Week 10 `messenger-frontend` project.
 * Replace observable logic with **signals**.
 * Use **native fetch API** for backend communication.
-* Auth logic must follow the provided mock `AuthService` example.
+* Auth logic must follow the provided mock `ApiService` example.
 * Contact selection triggers conversation updates.
 * Sending messages uses API + immediately appends locally.
 * App includes refresh button and scroll-to-latest behavior.

@@ -35,7 +35,11 @@ You can earn **up to 10 points** based on the successful completion of specific 
 ---
 
 ## **Submission Requirements**
-- **Submit the project as a ZIP file via Moodle.**
+- **Submit the project as a `.zip` file via Moodle.**
+- your submission **must include a built version of the app**:
+   - your app **must run without installing or running TypeScript / tsc**
+   - build your `.ts` source files using the `tsc` command and include the built `.js` files to the submission
+   - serving the files via a webserver (e.g. VSCode webserver plugin) must be sufficient to run your app
 - **Ensure full documentation** with comments explaining key components.
 - **Maintain type safety** using TypeScript best practices.
 
