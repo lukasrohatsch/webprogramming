@@ -1,7 +1,7 @@
 # Exercise 1: JavaScript Memory Game Implementation
 
 ## **Objective**
-The goal of this exercise is to build a simple **Memory Game** using JavaScript while only applying **previously learned concepts**. The game will be structured using direct DOM manipulation without loops, event listeners, or functions.
+The goal of this exercise is to build a simple **Memory Game** using JavaScript while only applying **previously learned concepts**. Solve the task using direct DOM manipulation, but **don't use** loops or event listeners.
 
 Successfully completing this exercise will earn **3 points**.
 
